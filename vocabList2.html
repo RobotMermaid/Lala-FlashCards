@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+
+<html lang = "en-us">
+<head>
+    <title>
+        Kindergarten Vocabulary Words
+    </title>
+    <script type="text/javascript"> 
+
+    var nextWord=0;
+    var goBack;
+    var soundIndex=0;
+    var mySound;
+
+    var vocabList= new Array ("hi","to", "the" , "and", "he", "it", "in", "at", "look", "is", "go", "we", "can", "see", "like", "me", "big", "no", "a", "up", "I");
+    var vocabSounds= new Array ("_sound/ClickOnThis.mp3", "_sound/To.ogg","_sound/The.mp3","_sound/And.mp3","_sound/He.mp3", "_sound/It.mp3", "_sound/In.mp3", "_sound/At.mp3", "_sound/Look.mp3", "_sound/Is.mp3", "_sound/Go.mp3", "_sound/We.mp3", "_sound/Can.mp3", "_sound/See.mp3", "_sound/Like.mp3", "_sound/Me.mp3", "_sound/Big.mp3", "_sound/No.mp3", "_sound/A.mp3", "_sound/Up.mp3", "_sound/I.mp3");
+
+
+
+    window.onload=function(){
+
+        mySound=document.getElementById("sound");
+        console.log("onload() mySound: "+mySound);
+        
+
+    }
+
+    function myFunction() {
+        var x=document.getElementById("word");
+			
+		nextWord++;
+				
+														console.log("myFunction: "+nextWord);               
+       
+        if (nextWord>vocabList.length-1) {
+        	nextWord=0;
+        												console.log("myFunction after: "+nextWord);
+            
+		} 
+		else if (nextWord<1) { 
+        	nextWord=0;
+        }
+        else {x.innerHTML=vocabList[nextWord];
+        }		 	  
+        	};
+														console.log(nextWord+" : "+vocabList[nextWord]);
+
+
+    function backFunction() {
+    	
+    	nextWord--;
+
+    	var goBack= vocabList[nextWord];
+        var x=document.getElementById("word");
+		
+														console.log("goBack: "+goBack);             
+        
+        //x.innerHTML=goBack;
+ 		
+               
+        if (nextWord<1) { 
+        	x.innerHTML=vocabList[0];
+        } else {
+        												console.log("setting innerHTML");
+        	x.innerHTML=vocabList[nextWord];
+        }
+       
+    };
+
+    function changeSound(){
+
+        soundIndex = nextWord;
+        
+        
+        
+                                                        console.log("changeSound() soundIndex: "+soundIndex+" setting src: "+vocabSounds[soundIndex]);
+        mySound.src = vocabSounds[soundIndex];
+        mySound.play();
+        
+        
+    }
+
+    console.log("ready");
+    console.log(vocabSounds);
+</script>
+
+
+    <style>
+        html { 
+            
+            background: #002233;
+        }
+          
+
+        h1 {
+            color: #2a386d;
+            font-family: Georgia;
+            font-weight: bold;
+            font-size: 10em;
+            text-align: center;
+            background: #C14F88;
+            border-bottom:10px ;
+            display: block;
+            padding-bottom: 0px;
+            margin-bottom: 10px;
+            
+        }
+
+        audio {
+            width: 0;
+            height:0;
+        } 
+        
+        div {
+
+            padding-left: 18em;
+            padding-top: 40px;
+            display: inline;
+            
+        }
+        
+
+
+    </style>    
+
+
+<body>
+    <h1 id="word">  </h1>
+    
+	<div onclick="myFunction()" ><img src="ARROW.gif"></div>
+	<div onclick="backFunction()" ><img src="ARROWback.gif"></div>
+   	<div onclick="changeSound()" align=right><img src="BUBBLE.gif"></button>
+   	<audio controls id="sound">
+    <source src="_sound/ClickOnThis.mp3" type="audio/mpeg">
+    
+    </audio>
+
+</body>
+
+    
+
+
+
+
+</html>
+
+
+
